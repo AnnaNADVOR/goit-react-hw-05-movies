@@ -19,31 +19,31 @@ function  Home ()  {
     
     useEffect(() => {
            console.log("effect")
-        // setStatus(STATUS.PENDING);
-        // getTrendingMovies()
-        //     .then(data => {
-        //         setMovies(data.results);
-        //         setStatus(STATUS.RESOLVED);
-        //     })
-        //     .catch(err => console.error(err));
+        setStatus(STATUS.PENDING);
+        getTrendingMovies()
+            .then(data => {
+                setMovies(data.results);
+                setStatus(STATUS.RESOLVED);
+            })
+            .catch(err => console.error(err));
     },[]) 
 
-    //       if (status === STATUS.RESOLVED) {
-    //         return (
-    //             <TrendingMoviesList
-    //     trendingMovies={movies}/>
+          if (status === STATUS.RESOLVED) {
+            return (
+                <TrendingMoviesList
+        trendingMovies={movies}/>
    
-    //         )
-    // }
+            )
+    }
     
-    //           if (status === STATUS.PENDING) {
-    //         return (
-    //             <>
-    //                 <RotatingLines />
-    //                 <div>Please wait...</div>
-    //             </>   
-    //         )
-    //     }
+              if (status === STATUS.PENDING) {
+            return (
+                <>
+                    <RotatingLines />
+                    <div>Please wait...</div>
+                </>   
+            )
+        }
        
 
 
