@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
-import { getTrendingMovies } from "../services/api"
-import TrendingMoviesList from "components/TrendingMoviesList/TrendingMoviesList";
 import { RotatingLines } from 'react-loader-spinner';
 
-const STATUS = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  RESOLVED: 'resolved',
-  REJECTED: 'rejected',
-}
+import TrendingMoviesList from "components/TrendingMoviesList/TrendingMoviesList";
+
+import { getTrendingMovies } from "../services/api"
+import STATUS from "../constants/STATUS";
+import Error from "components/Error/Eror";
 
 function  Home ()  {
    console.log("test")
     const [movies, setMovies] = useState([])
     const [status, setStatus] = useState(STATUS.IDLE);
-
-
-    
+    const [error, setError] = useState('');
+       
     useEffect(() => {
            console.log("effect")
         setStatus(STATUS.PENDING);
         getTrendingMovies()
             .then(data => {
+                // throw "error"
                 setMovies(data.results);
-                setStatus(STATUS.RESOLVED);
+                setStatus(STATUS.RESOLVED);               
             })
-            .catch(err => console.error(err));
+            .catch(error => {
+                setError('Oops! Something went wrong. Try again.');
+                setStatus(STATUS.REJECTED); 
+            });
     },[]) 
 
           if (status === STATUS.RESOLVED) {
@@ -45,6 +45,9 @@ function  Home ()  {
             )
         }
        
+    if (status === STATUS.REJECTED) {
+        return <Error>{error}</Error>
+    }
 
 
 }

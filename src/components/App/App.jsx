@@ -1,7 +1,7 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 // import { lazy } from 'react';
 import Home from "pages/Home";
-import MovieDetails from "../pages/MovieDetails"
+import MovieDetails from "../../pages/MovieDetails"
 
 // const Home = lazy(() => import('pages/Home'));
 
@@ -18,8 +18,8 @@ export const App = () => {
       </ul>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="movies" element={<div>Movies</div>} />
-        <Route path="movies/:movieId" element={<MovieDetails/>} />
+        <Route path="/movies" element={<div>Movies</div>} />
+        <Route path="/movies/:movieId" element={<MovieDetails/>} />
       </Routes>
     
     </div>
