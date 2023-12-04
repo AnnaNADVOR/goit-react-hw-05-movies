@@ -1,14 +1,14 @@
 import MovieDetailsCard from "components/MovieDetailsCard/MovieDetailsCard";
-import { useParams } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { getDetails } from "../services/api"
 import STATUS from "../constants/STATUS";
 
+
 const MovieDetails = () => {
 
     const { movieId } = useParams(); 
-
     const [details, setDetails] = useState([]);
     const [status, setStatus] = useState(STATUS.IDLE);
 
@@ -17,6 +17,7 @@ const MovieDetails = () => {
         if (!movieId) return;
         
         getDetails(movieId).then(data => {
+          
             setDetails(data);
             setStatus(STATUS.RESOLVED);
         }).catch(err => err) 
@@ -25,8 +26,22 @@ const MovieDetails = () => {
       
 
     if (status === STATUS.RESOLVED) {
-         return (
-        <MovieDetailsCard details={details}/>
+        return (
+             <>
+                <MovieDetailsCard details={details} />
+                <h2>Additional Info</h2>
+                <ul>
+                    <li>
+                        <Link to="cast">Cast</Link>                        
+                    </li>
+                    <li>
+                        <Link to="reviews">Reviews</Link>                        
+                    </li>
+                </ul>
+                <Outlet />
+             </>
+            
+             
     )
     }
    

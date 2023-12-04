@@ -1,10 +1,10 @@
-import { ImFilm } from "react-icons/im";
+import { PiMaskSadLight } from "react-icons/pi";
 import {ErrorContainer} from './Error.styled'
 
 function Error({ children }) {
     return (
         <ErrorContainer>
-            <ImFilm />
+            <PiMaskSadLight />
             {children}
         </ErrorContainer>
     )
