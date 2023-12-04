@@ -18,9 +18,9 @@ function MovieDetailsCard({ details }) {
 
     return (
         <div>
-            {/* { <img src={poster_path ? imgUrl : defaultImg} alt={title} /> } */}
+            { <img src={poster_path ? imgUrl : defaultImg} alt={title} /> }
             {/* {"" ? <img src={imgUrl} alt={title} /> : <DefaultPoster/>} */}
-              { <img src={"" ? imgUrl : defaultImg} alt={title} /> }
+              {/* { <img src={"" ? imgUrl : defaultImg} alt={title} /> } */}
             <h1>{title} ({release}) </h1>
             <p>User Score: {average}%</p>
             <h2>Overview</h2>
