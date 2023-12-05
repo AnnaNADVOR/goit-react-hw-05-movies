@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 
 import { getDetails } from "../services/api"
 import STATUS from "../constants/STATUS";
+import Loader from "components/Loader/Loader";
+import Error from "components/Error/Eror";
 
-
-const MovieDetails = () => {
-
+function MovieDetails  ()  {
     const { movieId } = useParams(); 
     const [details, setDetails] = useState([]);
     const [status, setStatus] = useState(STATUS.IDLE);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         setStatus(STATUS.PENDING);
@@ -20,14 +21,15 @@ const MovieDetails = () => {
           
             setDetails(data);
             setStatus(STATUS.RESOLVED);
-        }).catch(err => err) 
-        
+        }).catch(err => {
+            setError('Oops! Something went wrong. Try again.');
+            setStatus(STATUS.REJECTED);
+        })         
     }, [movieId])
       
-
     if (status === STATUS.RESOLVED) {
         return (
-             <>
+            <>
                 <MovieDetailsCard details={details} />
                 <h2>Additional Info</h2>
                 <ul>
@@ -39,12 +41,17 @@ const MovieDetails = () => {
                     </li>
                 </ul>
                 <Outlet />
-             </>
-            
-             
-    )
+             </>      
+            )
+    } 
+
+    if (status === STATUS.PENDING) {
+        return <Loader/>
     }
-   
+
+    if (status === STATUS.REJECTED) {
+        return <Error>{error}</Error>
+    }
 }
 
 export default MovieDetails; 

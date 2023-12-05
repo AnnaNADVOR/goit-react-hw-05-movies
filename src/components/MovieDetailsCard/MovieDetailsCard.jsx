@@ -1,7 +1,6 @@
 import defaultImg from 'not-found.jpg'; 
 
 function MovieDetailsCard({ details }) {
-
     const {
         poster_path = '',
         title = '',
