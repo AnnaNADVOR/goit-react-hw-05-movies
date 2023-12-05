@@ -4,17 +4,21 @@ import { useSearchParams } from "react-router-dom";
 
 function Movies() {
 
-    const [searchParams, setSearchParams] = useSearchParams(); 
-    const query = searchParams.get('query') ?? '';
+    // // const [searchParams, setSearchParams] = useSearchParams();
+    // // const query = searchParams.get('query') ?? '';
     
-    function onInputChange(event) {
-        setSearchParams({query:event.target.value});
+    // // function onInputChange(event) {
+    // //     setSearchParams({query:event.target.value});
+    // // }
+
+    // getMoviesByKeyword(query).then(data=>console.log(data))
+
+    const getQuery = (value) => {
+console.log(value)
     }
 
     return (
-        <Searchbar
-            change={onInputChange}
-            query={query} />
+        <Searchbar submit={getQuery} />
     )
     
 }
