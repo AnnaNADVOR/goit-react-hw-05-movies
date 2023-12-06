@@ -1,6 +1,6 @@
 import Searchbar from "components/Searchbar/Searchbar";
 import { getMoviesByKeyword } from "services/api";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Error from "components/Error/Eror";
 import STATUS from "constants/STATUS";
@@ -13,7 +13,6 @@ function Movies() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState('');
     const [status, setStatus] = useState(STATUS.IDLE);
-   
     
     useEffect(() => {
         if (query === '') {
@@ -40,11 +39,8 @@ function Movies() {
         <>
         <Searchbar submit={getQuery} />
             {status === STATUS.RESOLVED && <MoviesList movies={movies} />} 
-        </>
-   
-    )
-
-    
+        </>   
+    )    
 }
 
 export default Movies; 

@@ -1,6 +1,6 @@
 import MovieDetailsCard from "components/MovieDetailsCard/MovieDetailsCard";
-import { Link, useParams, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useParams, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 import { getDetails } from "../services/api"
 import STATUS from "../constants/STATUS";
@@ -8,12 +8,16 @@ import Loader from "components/Loader/Loader";
 import Error from "components/Error/Eror";
 import GoBackButton from "components/GoBackButton/GoBackButton";
 
+
 function MovieDetails  ()  {
+    const location = useLocation();
+    const prevLocationRef = useRef(location.state?.from ?? '/movies');
+
     const { movieId } = useParams(); 
     const [details, setDetails] = useState([]);
     const [status, setStatus] = useState(STATUS.IDLE);
     const [error, setError] = useState('');
-
+        
     useEffect(() => {
         setStatus(STATUS.PENDING);
         if (!movieId) return;
@@ -28,11 +32,13 @@ function MovieDetails  ()  {
         })         
     }, [movieId])
       
+//     console.log("location>>",location);
+//  console.log("prevlocation>>",prevLocationRef);
     if (status === STATUS.RESOLVED) {
         return (
             <>
-                <GoBackButton/>
-                <MovieDetailsCard details={details} />
+                <GoBackButton location={prevLocationRef.current}/>
+                <MovieDetailsCard details={details}/>
                 <h2>Additional Info</h2>
                 <ul>
                     <li>

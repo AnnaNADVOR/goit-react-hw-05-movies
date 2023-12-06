@@ -9,7 +9,7 @@ function Searchbar({ submit }) {
     
     function onFormSubmit (event) {
         event.preventDefault();
-        if (query.trim() === "") {
+        if (searchQuery.trim() === "") {
              console.log("no")
         }
         setSearchParams({ query: searchQuery});
@@ -17,9 +17,9 @@ function Searchbar({ submit }) {
     }
 
     function onInputChange(event) {
-        if (event.target.value === "") {
-            return setSearchParams({});
-        }        
+        // if (event.target.value === "") {
+        //     return setSearchParams({});
+        // }        
         setSearchQuery(event.target.value.toLowerCase().trim())
     }
     

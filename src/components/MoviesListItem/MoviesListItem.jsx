@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function MoviesListItem({ id, title }) {
+function MoviesListItem ({ title, id }) {
+    const location = useLocation();
+    
+    // const nextPath = location.pathname === '/' ? 'movies/' : '';
     return (
         <li>
-            <Link>{title}</Link>
+            <Link to={`/movies/${id}`} state={{ from: location }}>{title}</Link> 
         </li>
     )
 }

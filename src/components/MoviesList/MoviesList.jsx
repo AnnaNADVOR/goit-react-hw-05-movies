@@ -1,15 +1,14 @@
-import MoviesListItem from "components/MoviesListItem/MoviesListItem";
+import MoviesListItem from "../MoviesListItem/MoviesListItem";
 
 function MoviesList({movies}) {
     return (
         <ul>
-            {movies.map(movie =>
-                <MoviesListItem
-                    key={movie.id}
-                    title={movie.title}
-                    id={movie.id} />)}
+            {movies.map(movie => <MoviesListItem
+                key={movie.id}
+                title={movie.title}
+                id={movie.id}
+                />)}
         </ul>
-
     )
 }
 

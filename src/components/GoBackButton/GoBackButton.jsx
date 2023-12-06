@@ -1,9 +1,9 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-function GoBackButton () {
+function GoBackButton ({location}) {
     return (
-        <Link>
+        <Link to={location}>
             <IoIosArrowBack />
             Go Back
         </Link>
