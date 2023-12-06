@@ -1,12 +1,23 @@
 import MovieDetailsCard from "components/MovieDetailsCard/MovieDetailsCard";
-import { Link, useParams, Outlet, useLocation } from "react-router-dom";
+import { useParams, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Suspense } from "react";
-import { getDetails } from "../services/api"
-import STATUS from "../constants/STATUS";
+import { getDetails } from "../../services/api"
+import STATUS from "../../constants/STATUS";
 import Loader from "components/Loader/Loader";
 import Error from "components/Error/Eror";
 import GoBackButton from "components/GoBackButton/GoBackButton";
+import Section from 'components/Section/Section';
+import Container from 'components/Container/Container';
+
+import {
+    ButtonContainer,
+    AdditionalSection,
+    Title,
+    AdditionalList,
+    AdditionalLink,
+    AdditionalItem,
+} from "./MovieDetails.styled"
 
 
 function MovieDetails  ()  {
@@ -31,26 +42,34 @@ function MovieDetails  ()  {
             setStatus(STATUS.REJECTED);
         })         
     }, [movieId])
-      
-//     console.log("location>>",location);
-//  console.log("prevlocation>>",prevLocationRef);
+
     if (status === STATUS.RESOLVED) {
         return (
             <>
-                <GoBackButton location={prevLocationRef.current}/>
-                <MovieDetailsCard details={details}/>
-                <h2>Additional Info</h2>
-                <ul>
-                    <li>
-                        <Link to="cast">Cast</Link>                        
-                    </li>
-                    <li>
-                        <Link to="reviews">Reviews</Link>                        
-                    </li>
-                </ul>
+                <ButtonContainer>
+                   <GoBackButton location={prevLocationRef.current}/> 
+                </ButtonContainer>
+                        <Section>
+                    <Container>
+                       <MovieDetailsCard details={details}/>   
+                    </Container>
+                    </Section>
+                                      <AdditionalSection>
+                    <Container>
+                <Title>Additional Info</Title>
+                <AdditionalList>
+                    <AdditionalItem>
+                        <AdditionalLink to="cast">Cast</AdditionalLink>                        
+                    </AdditionalItem>
+                    <AdditionalItem>
+                        <AdditionalLink to="reviews">Reviews</AdditionalLink>                        
+                    </AdditionalItem>
+                </AdditionalList>
                 <Suspense fallback={<div>Information search...</div>}>
                   <Outlet />  
-                </Suspense>                
+                        </Suspense>  
+                 </Container>
+                    </AdditionalSection>        
              </>      
             )
     } 

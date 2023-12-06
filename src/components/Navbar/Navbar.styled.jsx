@@ -23,6 +23,7 @@ export const LogoTitlePart = styled.span`
 `
 export const Nav = styled.nav`
     display: flex;
+    margin-right: 30px;
 `
 export const NavList = styled.ul`
     display: flex;
@@ -30,7 +31,8 @@ export const NavList = styled.ul`
 `
 export const NavItem = styled.li`
   &:not(:last-child){
-    margin-right: 30px; 
+    margin-right: 30px;
+    margin-left: 30px; 
   }
 `
 
@@ -40,6 +42,7 @@ export const Link = styled(NavLink)`
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 20px;
+    font-weight: 600;
     color:${({ theme }) => theme.colors.lightgray};
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
