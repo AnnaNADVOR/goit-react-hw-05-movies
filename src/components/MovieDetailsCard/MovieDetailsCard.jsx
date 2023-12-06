@@ -1,6 +1,11 @@
 import defaultImg from 'not-found.jpg'; 
 import Section from 'components/Section/Section';
-import Container  from 'components/Container/Container';
+import Container from 'components/Container/Container';
+
+import {
+    Card,
+    CardInfo,
+} from './MoviDetailsCard.styled';
 
 function MovieDetailsCard({ details }) {
     const {
@@ -20,7 +25,9 @@ function MovieDetailsCard({ details }) {
     return (
         <Section>
             <Container>
-                {<img src={poster_path ? imgUrl : defaultImg} alt={title} />}
+                <Card>
+                    {<img src={poster_path ? imgUrl : defaultImg} alt={title} />}
+                    <CardInfo>
                 <h1>{title} ({release}) </h1>
                 <p>User Score: {average}%</p>
                 <h2>Overview</h2>
@@ -28,7 +35,9 @@ function MovieDetailsCard({ details }) {
                 {genres.length>0 && (<>
                     <h2>Genres</h2>
                     <p>{movieGenres}</p>
-                </>)}            
+                        </>)}  
+                        </CardInfo>
+                </Card>    
             </Container>
         </Section>
     )
