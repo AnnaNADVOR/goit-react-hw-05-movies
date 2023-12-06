@@ -5,6 +5,7 @@ import { getReviews } from "services/api";
 import STATUS from "constants/STATUS";
 import Loader from "components/Loader/Loader";
 import Error from "components/Error/Eror";
+import Notification from "components/Notification/Notification";
 
 function Reviews() {
 
@@ -19,24 +20,27 @@ function Reviews() {
             setReviews(data.results);
             setStatus(STATUS.RESOLVED);
         }).catch(error => {
-            setError('Oops! Something went wrong. Try again.')
+            setError('Oops! Something went wrong. Try again.');
+            setStatus(STATUS.REJECTED);
         })
     }, [movieId])
 
     if (status === STATUS.RESOLVED) {
-       return (
-        <>
-        {reviews.length ? (
-            <ul>
-                {reviews.map(review =>
-                    <li key={review.id}>
-                        <p>Author: {review.author}</p>
-                        <p>{review.content}</p>
-                    </li>)}
-            </ul>
-        )
-            : <p>Sorry! We don't have any reviews for this movie.</p>}
-        </>)  
+        return (
+            <>
+                {reviews.length ? (
+                    <ul>
+                        {reviews.map(({id, author, content}) =>
+                            <li key={id}>
+                                <p>Author: {author}</p>
+                                <p>{content}</p>
+                            </li>
+                        )}
+                    </ul>
+                )
+                : <Notification>Sorry! We don't have any reviews for this movie.</Notification>}
+            </>
+        )  
     }
 
     if (status === STATUS.PENDING) {

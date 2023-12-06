@@ -9,7 +9,7 @@ export const ErrorContainer = styled.div`
     padding: 60px; 
     font-size: 30px; 
     font-weight: 500;
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.darkbue};
     
 
     &>svg {

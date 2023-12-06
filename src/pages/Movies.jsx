@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import Error from "components/Error/Eror";
 import STATUS from "constants/STATUS";
 import MoviesList from "components/MoviesList/MoviesList";
+import Loader from "components/Loader/Loader";
+import Notification from "components/Notification/Notification";
+
 
 function Movies() {
 
@@ -19,11 +22,7 @@ function Movies() {
             return;
         }
         setStatus(STATUS.PENDING);
-        getMoviesByKeyword(query).then(data => {
-            if (data.results.length === 0) {
-                console.log('No items found! Enter other serch therm.')
-                return;
-            }              
+        getMoviesByKeyword(query).then(data => {               
             setMovies(data.results);
             setStatus(STATUS.RESOLVED);            
         }).catch(error => { 
@@ -38,7 +37,9 @@ function Movies() {
     return (
         <>
         <Searchbar submit={getQuery} />
-            {status === STATUS.RESOLVED && <MoviesList movies={movies} />} 
+            {status === STATUS.RESOLVED && (movies.length ? (<MoviesList movies={movies} />) : (<Notification>No items found! Enter other serch therm.</Notification>)) }
+            {status === STATUS.REJECTED && <Error>{error}</Error>} 
+            {status === STATUS.PENDING && <Loader/>} 
         </>   
     )    
 }

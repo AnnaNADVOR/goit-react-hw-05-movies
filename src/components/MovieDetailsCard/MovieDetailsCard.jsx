@@ -22,8 +22,11 @@ function MovieDetailsCard({ details }) {
             <p>User Score: {average}%</p>
             <h2>Overview</h2>
             <p>{overview}</p>
-            <h2>Genres</h2>
-            <p>{movieGenres}</p>
+            {genres.length>0 && (<>
+                <h2>Genres</h2>
+                <p>{movieGenres}</p>
+            </>)}
+            
         </div>
     )
 }
