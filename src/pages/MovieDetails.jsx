@@ -6,6 +6,7 @@ import { getDetails } from "../services/api"
 import STATUS from "../constants/STATUS";
 import Loader from "components/Loader/Loader";
 import Error from "components/Error/Eror";
+import GoBackButton from "components/GoBackButton/GoBackButton";
 
 function MovieDetails  ()  {
     const { movieId } = useParams(); 
@@ -30,6 +31,7 @@ function MovieDetails  ()  {
     if (status === STATUS.RESOLVED) {
         return (
             <>
+                <GoBackButton/>
                 <MovieDetailsCard details={details} />
                 <h2>Additional Info</h2>
                 <ul>

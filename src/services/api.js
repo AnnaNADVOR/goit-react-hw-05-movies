@@ -21,8 +21,8 @@ export function getReviews(id) {
     .then(response => response.json())
 }
 
-export function getMoviesByKeyword(keyword) {
-    return fetch(`${BASE_URL}/search/movie?query=${keyword}&include_adult=false&language=en-US&page=1}`)
+export function getMoviesByKeyword(searchQuery) {
+    return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`)
         .then(response => response.json())
   
 }
