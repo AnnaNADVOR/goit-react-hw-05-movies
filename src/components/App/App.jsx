@@ -1,13 +1,12 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-// import { lazy } from 'react';
-import Home from "pages/Home";
-import MovieDetails from "../../pages/MovieDetails";
-import Movies from "pages/Movies";
-import Reviews from "components/Reviews/Reviews";
-import CastList from "components/CastList/CastList";
+import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 import Layout from "components/Layout/Layout";
 
-// const Home = lazy(() => import('pages/Home'));
+const Home = lazy(() => import('../../pages/Home'));
+const Movies = lazy(() => import('../../pages/Movies'));
+const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const CastList = lazy(() => import('components/CastList/CastList'));
 
 export const App = () => {
   return (

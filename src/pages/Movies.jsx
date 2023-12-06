@@ -1,6 +1,6 @@
 import Searchbar from "components/Searchbar/Searchbar";
 import { getMoviesByKeyword } from "services/api";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Error from "components/Error/Eror";
 import STATUS from "constants/STATUS";

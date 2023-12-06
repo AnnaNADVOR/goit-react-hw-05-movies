@@ -1,10 +1,10 @@
-import { PiMaskSadLight } from "react-icons/pi";
+import { PiMaskSadDuotone } from "react-icons/pi";
 import {ErrorContainer} from './Error.styled'
 
 function Error({ children }) {
     return (
         <ErrorContainer>
-            <PiMaskSadLight />
+            <PiMaskSadDuotone />
             {children}
         </ErrorContainer>
     )

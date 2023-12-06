@@ -27,8 +27,6 @@ function  Home ()  {
             });
     }, []);
 
- 
-
     if (status === STATUS.RESOLVED) {
         return (
             <TrendingMoviesList

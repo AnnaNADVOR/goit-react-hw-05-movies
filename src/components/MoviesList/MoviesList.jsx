@@ -3,10 +3,10 @@ import MoviesListItem from "../MoviesListItem/MoviesListItem";
 function MoviesList({movies}) {
     return (
         <ul>
-            {movies.map(movie => <MoviesListItem
-                key={movie.id}
-                title={movie.title}
-                id={movie.id}
+            {movies.map(({id, title}) => <MoviesListItem
+                key={id}
+                title={title}
+                id={id}
                 />)}
         </ul>
     )

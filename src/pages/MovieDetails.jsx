@@ -1,7 +1,7 @@
 import MovieDetailsCard from "components/MovieDetailsCard/MovieDetailsCard";
 import { Link, useParams, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-
+import { Suspense } from "react";
 import { getDetails } from "../services/api"
 import STATUS from "../constants/STATUS";
 import Loader from "components/Loader/Loader";
@@ -48,7 +48,9 @@ function MovieDetails  ()  {
                         <Link to="reviews">Reviews</Link>                        
                     </li>
                 </ul>
-                <Outlet />
+                <Suspense fallback={<div>Information search...</div>}>
+                  <Outlet />  
+                </Suspense>                
              </>      
             )
     } 

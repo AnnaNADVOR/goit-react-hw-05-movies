@@ -29,12 +29,12 @@ function CastList() {
         <>
         {cast.length ?
             <ul>
-                {cast.map(actor => 
+                {cast.map(({cast_id, character, name, profile_path}) => 
                     <CastListItem 
-                        key={actor.cast_id}
-                        character={actor.character}
-                        name={actor.name}
-                        profile_path={actor.profile_path} />
+                        key={cast_id}
+                        character={character}
+                        name={name}
+                        profile_path={profile_path} />
                 )}             
             </ul> 
     : <p>Sorry! We don't have cast information for this movie.</p> } 
