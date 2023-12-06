@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
+
+import {
+    MoviesItem,
+    MoviesLink,
+
+} from "./MoviesListItem.style"
+
 
 function MoviesListItem ({ title, id }) {
     const location = useLocation();
     return (
-        <li>
-            <Link to={`/movies/${id}`} state={{ from: location }}>{title}</Link> 
-        </li>
+        <MoviesItem>
+            <IoIosArrowForward />
+            <MoviesLink to={`/movies/${id}`} state={{ from: location }}>{title}</MoviesLink> 
+        </MoviesItem>
     )
 }
 

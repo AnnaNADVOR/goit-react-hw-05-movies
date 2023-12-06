@@ -7,12 +7,10 @@ import {
     Nav,
     NavList,
     NavItem, 
-    Link
-
+    Link,
 } from "./Navbar.styled";
 
 function Navbar() {
-      
     return (
         <>
             <Logo>

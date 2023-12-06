@@ -1,12 +1,15 @@
 import { IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import {
+    BackLink,
+} from "./GoBackButton.styled";
 
 function GoBackButton ({location}) {
     return (
-        <Link to={location}>
+        <BackLink to={location}>
             <IoIosArrowBack />
             Go Back
-        </Link>
-)
+        </BackLink>
+    )
 }
+
 export default GoBackButton; 

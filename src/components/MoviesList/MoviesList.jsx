@@ -1,14 +1,21 @@
 import MoviesListItem from "../MoviesListItem/MoviesListItem";
 
+import {
+    List,
+    Section,
+} from "./MoviesList.styled";
+
 function MoviesList({movies}) {
     return (
-        <ul>
-            {movies.map(({id, title}) => <MoviesListItem
-                key={id}
-                title={title}
-                id={id}
+        <Section>       
+            <List>
+                {movies.map(({id, title}) => <MoviesListItem
+                    key={id}
+                    title={title}
+                    id={id}
                 />)}
-        </ul>
+            </List>
+        </Section>
     )
 }
 

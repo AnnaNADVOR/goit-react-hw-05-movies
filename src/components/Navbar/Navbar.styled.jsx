@@ -8,7 +8,7 @@ export const Logo = styled.div`
     &>svg {
         width: 30px;
         height: 30px; 
-        fill:  ${({ theme }) => theme.colors.lightgray};
+        fill: ${({ theme }) => theme.colors.lightgray};
         margin-right: 10px;  
     }   
 `
@@ -22,7 +22,7 @@ export const LogoTitlePart = styled.span`
 
 `
 export const Nav = styled.nav`
- 
+    display: flex;
 `
 export const NavList = styled.ul`
     display: flex;
@@ -39,9 +39,9 @@ export const Link = styled(NavLink)`
     display: block;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 16px;
+    font-size: 20px;
     color:${({ theme }) => theme.colors.lightgray};
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &.active{
         color:${({ theme }) => theme.colors.accentColor};

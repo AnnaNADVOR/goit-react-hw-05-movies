@@ -1,4 +1,6 @@
 import defaultImg from 'not-found.jpg'; 
+import Section from 'components/Section/Section';
+import Container  from 'components/Container/Container';
 
 function MovieDetailsCard({ details }) {
     const {
@@ -16,18 +18,19 @@ function MovieDetailsCard({ details }) {
     const imgUrl = `https://image.tmdb.org/t/p/w300/${poster_path}`;
 
     return (
-        <div>
-            { <img src={poster_path ? imgUrl : defaultImg} alt={title} /> }
-            <h1>{title} ({release}) </h1>
-            <p>User Score: {average}%</p>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-            {genres.length>0 && (<>
-                <h2>Genres</h2>
-                <p>{movieGenres}</p>
-            </>)}
-            
-        </div>
+        <Section>
+            <Container>
+                {<img src={poster_path ? imgUrl : defaultImg} alt={title} />}
+                <h1>{title} ({release}) </h1>
+                <p>User Score: {average}%</p>
+                <h2>Overview</h2>
+                <p>{overview}</p>
+                {genres.length>0 && (<>
+                    <h2>Genres</h2>
+                    <p>{movieGenres}</p>
+                </>)}            
+            </Container>
+        </Section>
     )
 }
 
