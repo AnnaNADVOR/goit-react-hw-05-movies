@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BiSearchAlt } from "react-icons/bi";
+
+import Section from 'components/Section/Section';
+import Container from 'components/Container/Container';
+import {
+    SearchForm,
+    SearchButton,
+    SearchField,
+} from './Searchbar.styled';
+
+
 function Searchbar({ submit }) {
-  
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') ?? '';
     const [searchQuery, setSearchQuery] = useState(query);
@@ -20,15 +29,20 @@ function Searchbar({ submit }) {
     }
 
     return (
-        <form onSubmit={onFormSubmit}>
-            <input type="text"
+        <Section>
+            <Container>
+            <SearchForm onSubmit={onFormSubmit}>
+            <SearchField type="text"
                 onChange={onInputChange}
                 value={searchQuery}
                 placeholder="Search movies"/>
-            <button type="submit">
+            <SearchButton type="submit">
                 <BiSearchAlt />
-            </button>        
-        </form>        
+            </SearchButton>        
+                </SearchForm>
+        </Container>        
+        </Section>
+             
     )
 }
 

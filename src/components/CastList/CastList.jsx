@@ -6,7 +6,11 @@ import STATUS from "constants/STATUS";
 import Error from "components/Error/Eror";
 import Loader from "components/Loader/Loader";
 import Notification from "components/Notification/Notification";
-import CastListItem from "components/CastListItem/CastLiastItem";
+import CastListItem from "components/CastListItem/CastListItem";
+
+import {
+    Cast,
+} from "./CastList.styled";
 
 function CastList() {
     const { movieId } = useParams(); 
@@ -29,7 +33,7 @@ function CastList() {
         return (
             <>
                 {cast.length ?
-                    <ul>
+                    <Cast>
                         {cast.map(({cast_id, character, name, profile_path}) => 
                             <CastListItem 
                                 key={cast_id}
@@ -37,7 +41,7 @@ function CastList() {
                                 name={name}
                                 profile_path={profile_path} />
                         )}             
-                    </ul> 
+                    </Cast> 
                 : <Notification>Sorry! We don't have cast information for this movie.</Notification>} 
             </>
         )

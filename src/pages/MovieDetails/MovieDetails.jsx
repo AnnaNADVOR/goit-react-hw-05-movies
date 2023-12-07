@@ -17,8 +17,8 @@ import {
     AdditionalList,
     AdditionalLink,
     AdditionalItem,
+    Info,
 } from "./MovieDetails.styled"
-
 
 function MovieDetails  ()  {
     const location = useLocation();
@@ -49,29 +49,29 @@ function MovieDetails  ()  {
                 <ButtonContainer>
                    <GoBackButton location={prevLocationRef.current}/> 
                 </ButtonContainer>
-                        <Section>
+                <Section>
                     <Container>
                        <MovieDetailsCard details={details}/>   
                     </Container>
-                    </Section>
-                                      <AdditionalSection>
+                </Section>
+                <AdditionalSection>
                     <Container>
-                <Title>Additional Info</Title>
-                <AdditionalList>
-                    <AdditionalItem>
-                        <AdditionalLink to="cast">Cast</AdditionalLink>                        
-                    </AdditionalItem>
-                    <AdditionalItem>
-                        <AdditionalLink to="reviews">Reviews</AdditionalLink>                        
-                    </AdditionalItem>
-                </AdditionalList>
-                <Suspense fallback={<div>Information search...</div>}>
-                  <Outlet />  
+                        <Title>Additional Info</Title>
+                        <AdditionalList>
+                            <AdditionalItem>
+                                <AdditionalLink to="cast">Cast</AdditionalLink>                        
+                            </AdditionalItem>
+                            <AdditionalItem>
+                                <AdditionalLink to="reviews">Reviews</AdditionalLink>                        
+                            </AdditionalItem>
+                        </AdditionalList>
+                        <Suspense fallback={<Info>Information search...</Info>}>
+                            <Outlet />  
                         </Suspense>  
-                 </Container>
-                    </AdditionalSection>        
-             </>      
-            )
+                    </Container>
+                </AdditionalSection>        
+            </>      
+        )
     } 
 
     if (status === STATUS.PENDING) {

@@ -37,7 +37,12 @@ function Movies() {
     return (
         <>
         <Searchbar submit={getQuery} />
-            {status === STATUS.RESOLVED && (movies.length ? (<MoviesList movies={movies} />) : (<Notification>No items found! Enter other serch therm.</Notification>)) }
+            {status === STATUS.RESOLVED &&
+                (movies.length ?
+                    (<MoviesList movies={movies} />) :
+                    (<Notification>No items found! Enter other serch therm.</Notification>)
+                )
+            }
             {status === STATUS.REJECTED && <Error>{error}</Error>} 
             {status === STATUS.PENDING && <Loader/>} 
         </>   

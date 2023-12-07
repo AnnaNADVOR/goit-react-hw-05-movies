@@ -7,8 +7,14 @@ import Loader from "components/Loader/Loader";
 import Error from "components/Error/Eror";
 import Notification from "components/Notification/Notification";
 
-function Reviews() {
+import {
+    ReviewsList,
+    ReviewsItem,
+    ReviewAuthor,
+    ReviewInfo,
+} from "./Reviews.styled";
 
+function Reviews() {
     const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
     const [status, setStatus] = useState(STATUS.IDLE); 
@@ -29,14 +35,14 @@ function Reviews() {
         return (
             <>
                 {reviews.length ? (
-                    <ul>
+                    <ReviewsList>
                         {reviews.map(({id, author, content}) =>
-                            <li key={id}>
-                                <p>Author: {author}</p>
-                                <p>{content}</p>
-                            </li>
+                            <ReviewsItem key={id}>
+                                <ReviewAuthor><span>Author:</span>{author}</ReviewAuthor>
+                                <ReviewInfo>{content}</ReviewInfo>
+                            </ReviewsItem>
                         )}
-                    </ul>
+                    </ReviewsList>
                 )
                 : <Notification>Sorry! We don't have any reviews for this movie.</Notification>}
             </>

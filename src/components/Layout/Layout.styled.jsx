@@ -10,3 +10,9 @@ export const  HeaderContainer = styled.div`
     margin-right: auto;
     background-color: ${({ theme }) => theme.colors.darkblue};
 `
+export const  SuspenseInfo = styled.div`
+    margin-top:20px;
+    margin-left: 20px; 
+    font-size: 20px;
+    color: ${({ theme }) => theme.colors.darkblue};
+`

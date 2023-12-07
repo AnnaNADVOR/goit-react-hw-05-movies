@@ -2,7 +2,10 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import Navbar from "components/Navbar/Navbar";
-import { HeaderContainer } from "./Layout.styled";
+import {
+    HeaderContainer,
+    SuspenseInfo,
+} from "./Layout.styled";
 
 function Layout () {
     return (
@@ -13,7 +16,7 @@ function Layout () {
                 </HeaderContainer>                
             </header>
             <main>
-                <Suspense fallback={<p>Preparing the page...</p>}>
+                <Suspense fallback={<SuspenseInfo>Preparing the page...</SuspenseInfo>}>
                    <Outlet/> 
                 </Suspense>                
             </main>

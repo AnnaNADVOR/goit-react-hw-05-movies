@@ -19,7 +19,6 @@ export const AdditionalList = styled.ul`
     list-style: none;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px; 
 `
 export const AdditionalItem = styled.li`
    &:not(:last-child){
@@ -41,8 +40,8 @@ export const AdditionalLink = styled(NavLink)`
         background-color: ${({ theme }) => theme.colors.accentColor};
     }
 `    
-// export const Info = styled.div`
-// margin: 30px 0;
-
-    
-// `
+export const Info = styled.div`
+    font-size: 20px;
+    color: ${({ theme }) => theme.colors.darkblue};
+    margin-top: 20px;    
+`
