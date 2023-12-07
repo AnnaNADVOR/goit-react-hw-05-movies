@@ -26,6 +26,7 @@ export const Title = styled.h2`
 `
 export const Text = styled.p`
     color: ${({ theme }) => theme.colors.darkblue};
+    font-size: 16px;
     margin-bottom: 10px;
 `
 export const TextAccent = styled.span`
