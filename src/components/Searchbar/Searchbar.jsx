@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BiSearchAlt } from "react-icons/bi";
 
-import Section from 'components/Section/Section';
 import Container from 'components/Container/Container';
 import {
+    FormSection,
     SearchForm,
     SearchButton,
     SearchField,
@@ -29,19 +29,19 @@ function Searchbar({ submit }) {
     }
 
     return (
-        <Section>
+        <FormSection>
             <Container>
-            <SearchForm onSubmit={onFormSubmit}>
-            <SearchField type="text"
-                onChange={onInputChange}
-                value={searchQuery}
-                placeholder="Search movies"/>
-            <SearchButton type="submit">
-                <BiSearchAlt />
-            </SearchButton>        
+                <SearchForm onSubmit={onFormSubmit}>
+                    <SearchField type="text"
+                        onChange={onInputChange}
+                        value={searchQuery}
+                        placeholder="Search movies"/>
+                    <SearchButton type="submit">
+                        <BiSearchAlt />
+                    </SearchButton>        
                 </SearchForm>
-        </Container>        
-        </Section>
+            </Container>        
+        </FormSection>
              
     )
 }

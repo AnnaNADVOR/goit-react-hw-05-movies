@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+
+export const FormSection = styled.section`
+    padding-top:20px;
+`
 export const SearchForm = styled.form`
     display: flex;
     justify-content: center;

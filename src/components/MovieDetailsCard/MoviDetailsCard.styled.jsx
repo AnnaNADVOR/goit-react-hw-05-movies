@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 
 export const Card = styled.div`
-display: flex; 
-gap: 50px;
+    display: flex; 
+    gap: 50px;
 
-&>img{
-    border-radius: 4px; 
-    width: 300px;
-    height: 450px;
-    object-fit: cover;
-    box-shadow: 0px 4px 4px rgba(0,0,0,.15);
-}
+    &>img{
+        border-radius: 4px; 
+        width: 300px;
+        height: 450px;
+        object-fit: cover;
+        box-shadow: 0px 4px 4px rgba(0,0,0,.15);
+    }
 `
 export const CardInfo = styled.div`
     display: flex;
